@@ -47,7 +47,8 @@ class PageController {
         categoryName,
         stylesheet: "article",
         description: article.description,
-        ogImage: article.ogImage,
+        author: article.author,
+        ogImage: article.image,
         ogUrl: path.join(categoryName, articleTitle),
       });
     });
