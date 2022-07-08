@@ -1,0 +1,8 @@
+extends extends/layout
+
+block content    
+    div#main                   
+        for category in categories
+            li#category-list
+                a(href="articles/"+category.slug).button-style= category.name        
+               

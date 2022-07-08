@@ -1,0 +1,38 @@
+.articles-container {
+  display: grid;
+}
+
+.article-box {
+  box-shadow: 0 5px 10px #eee;
+  margin: 1rem;
+  list-style: none;
+}
+
+.article-main {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.article-inner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.article-inner img {
+  width: 100%;
+}
+
+.article-action {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .articles-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .articles-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

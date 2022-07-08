@@ -1,0 +1,55 @@
+.article-box {
+  box-shadow: 0 5px 10px #eee;
+  margin: 2rem 1rem;
+  padding: 0.5rem;
+}
+
+.article-image {
+  width: 100%;
+}
+
+.extra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.4rem 0;
+}
+
+.article-author {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: small;
+}
+
+.article-content {
+  text-align: justify;
+}
+
+.time-posted {
+  font-size: small;
+  color: red;
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.back-button {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .article-box {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-box {
+    width: 60%;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+}

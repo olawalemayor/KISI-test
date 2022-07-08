@@ -1,0 +1,16 @@
+extends extends/layout
+
+block content
+    h2.page-header #{title} News
+
+    include includes/searchbar
+
+    ul.articles-container
+        for article in articles 
+            li.article-box
+                div.article-inner
+                    img(src=article.image, alt=article.title)
+                div.article-main                        
+                    h3= article.title
+                    button.article-action
+                        a(href=`${categoryName}/${article.slug}`).button-style Read More 
