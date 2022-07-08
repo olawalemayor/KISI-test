@@ -4,12 +4,13 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(name="description" content = `${description}`)
-        meta(property="og:image" content = `${ogImage}`)
-        meta(name="og:url" content = `${ogUrl}`)
+        meta(name="description" content = `${description && description}`)
+        meta(property="og:image" content = `${ogImage && ogImage}`)
+        meta(property="og:url" content = `${ogUrl && ogUrl}`)
         title #{title.toUpperCase()} | KISI Articles       
         link(rel="stylesheet", href="/style.css")
         link(rel="stylesheet", href=`/styles/${stylesheet}.css`)
+        link(rel="canonical", href=`${canonical && canonical}`)
     body 
         header 
             include ../includes/header

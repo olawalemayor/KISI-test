@@ -1,6 +1,7 @@
 const Articles = require("../articles/index");
 const Mail = require("../mail");
 const ArticleService = require("../services/index");
+const path = require("path");
 
 class PageController {
   #articleService;
@@ -45,6 +46,9 @@ class PageController {
         article,
         categoryName,
         stylesheet: "article",
+        description: article.description,
+        ogImage: article.ogImage,
+        ogUrl: path.join(categoryName, articleTitle),
       });
     });
   }
