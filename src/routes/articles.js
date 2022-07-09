@@ -3,13 +3,9 @@ const router = express.Router();
 const pageController = require("../controllers/pageController");
 
 //Articles (Category page)
-router.get("/:categoryName", (req, res) =>
-  pageController.renderCategoryPage(req, res)
-);
+router.get("/:categoryName", pageController.renderCategoryPage());
 
 //Article (Single page)
-router.get("/:categoryName/:articleTitle", (req, res) =>
-  pageController.renderArticlePage(req, res)
-);
+router.get("/:categoryName/:articleTitle", pageController.renderArticlePage());
 
 module.exports = router;

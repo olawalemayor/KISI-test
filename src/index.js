@@ -19,19 +19,19 @@ app.use(express.static(path.join(__dirname, "public")));
 //Set routes
 
 //Home
-app.get("/", (req, res) => pageController.renderHome(req, res));
+app.get("/", pageController.renderHome());
 
 //For articles
 app.use("/articles", articles);
 
 //Search result page
-app.get("/search", (req, res) => pageController.renderSearchResults(req, res));
+app.get("/search", pageController.renderSearchResults());
 
 //404 page
-app.get("/*", (req, res) => pageController.render404Page(req, res));
+app.get("/*", pageController.render404Page());
 
 //Send mail
-app.post("/", (req, res) => pageController.postMail(req, res));
+app.post("/", pageController.postMail());
 const port = process.env.PORT || 9000;
 
 app.listen(port, () => console.log("Server is started on Port : ", port));
