@@ -4,9 +4,9 @@ block content
     div.article-box
         button.back-button
             a(href=`../${categoryName}`).button-style Back to #{categoryName} news
-        h2.page-header #{title}
+        h2.page-header !{title}
         img(src=article.image , alt=title).article-image  
         div.extra 
             span.article-author= article.author       
             span.time-posted POSTED ON #{article.date.toLocaleDateString()}
-        div.article-content #{article.content}
+        div.article-content !{article.content}

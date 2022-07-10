@@ -1,4 +1,5 @@
 const axios = require("axios");
+const lodash = require("lodash");
 const createArticle = require("./article");
 
 class Articles {
@@ -22,7 +23,9 @@ class Articles {
   async getSingleArticle(articleTitle) {
     //ArticleTitle is the slug
     try {
-      const { data } = await axios(`${this.#apiURL}posts?slug=${articleTitle}`);
+      const { data } = await axios.get(
+        `${this.#apiURL}posts?slug=${articleTitle}`
+      );
 
       return createArticle(data[0]);
     } catch (error) {
@@ -61,13 +64,14 @@ class Articles {
       const perPage = pagination ? pagination : 10;
       const page = pageNumber ? pageNumber : 1;
 
-      const { data } = await axios.get(
+      //get query results
+      const { data: result } = await axios.get(
         `${this.#apiURL}search?search=${query}&per_page=${perPage}&page=${page}`
       );
 
-      return data.map((article) => {
+      return result.map((article) => {
         return {
-          id: article.id,
+          name: article.name,
           title: article.title,
           url: article.url,
         };

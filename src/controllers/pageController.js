@@ -13,6 +13,7 @@ class PageController {
   renderHome() {
     return (req, res) =>
       this.#articleService.getArticleCategories().then((categories) => {
+        //render with custom meta properties
         res.render("index", {
           title: "Home",
           categories,
@@ -45,6 +46,7 @@ class PageController {
       const { articleTitle, categoryName } = req.params;
 
       this.#articleService.getSingleArticle(articleTitle).then((article) => {
+        //render with custom meta properties
         res.render("article", {
           title: article.title,
           article,
@@ -60,20 +62,25 @@ class PageController {
   }
 
   renderSearchResults() {
-    return (req, res) => {
+    return async (req, res) => {
       const { query, page, limit } = req.query;
 
-      this.#articleService
-        .searchArticle(query, limit, page)
-        .then((articles) => {
-          articles.length
-            ? res.render("search", {
-                title: query,
-                articles,
-                stylesheet: "search",
-              })
-            : this.render404Page(req, res);
-        });
+      const articles = await this.#articleService.searchArticle(
+        query,
+        limit,
+        page
+      );
+
+      //Conditionally render search result or not found page based on the availability of result
+      articles.length
+        ? //render result
+          res.render("search", {
+            title: query,
+            articles,
+            stylesheet: "search",
+          })
+        : // OR Not found page
+          this.render404Page();
     };
   }
 
@@ -84,15 +91,14 @@ class PageController {
 
   postMail() {
     return async (req, res) => {
-      const { name, email, color } = req.body;
+      let { name, email, color } = req.body;
 
       const result = await this.#articleService.sendMail(name, email, color);
 
       if (!result) return res.status(500);
 
-      res.status(200);
-
-      return this.renderHome(req, res);
+      //set response and redirect to home
+      res.status(200).redirect("/");
     };
   }
 }

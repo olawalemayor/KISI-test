@@ -9,4 +9,4 @@ block content
     ul.article-container 
         for article in articles
             li.article-list-item  
-                a(href=article.url).article-item= article.title
+                a(href=article.url).article-item !{article.title}                
