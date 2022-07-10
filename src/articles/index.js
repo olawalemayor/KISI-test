@@ -1,5 +1,4 @@
 const axios = require("axios");
-const lodash = require("lodash");
 const createArticle = require("./article");
 
 class Articles {
